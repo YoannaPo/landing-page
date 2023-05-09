@@ -22,7 +22,7 @@
  * Define Global Variables
  * 
 */
-
+//const firstSection = ;
 
 /**
  * End Global Variables
