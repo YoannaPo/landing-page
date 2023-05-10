@@ -22,8 +22,14 @@
  * Define Global Variables
  * 
 */
-//const firstSection = ;
+const firstSection = document.querySelector('#section1');
+const secondSection = document.querySelector('#section2');
+const thirdSection = document.querySelector('#section3');
+const fourthSection = document.querySelector('#section4');
 
+const sections = document.querySelectorAll('section');
+const navMenu = document.querySelector('.navbar__menu');
+const navList = document.querySelector('#navbar__list');
 /**
  * End Global Variables
  * Start Helper Functions
@@ -39,6 +45,25 @@
 */
 
 // build the nav
+
+/** 
+ * @description The 'for of loop' will:
+ * Loop through all sections
+ * Create a list item
+ * Create an anchor item
+ * Set the list item's class to 'navbar__liItem'
+ * Add the section name to the innerText
+ * Append the list item to the navbar
+*/
+for (const section of sections) {
+    const navLiItem = document.createElement('li');
+    navLiItem.className = "navbar__liItem";
+    const navA = document.createElement('a');
+    navA.textContent = section.dataset.nav;
+    navA.href = `#${section.id}`;
+    navLiItem.appendChild(navA);
+    navList.appendChild(navLiItem);
+}
 
 
 // Add class 'active' to section when near top of viewport
