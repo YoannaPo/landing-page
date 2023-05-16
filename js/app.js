@@ -30,12 +30,29 @@ const fourthSection = document.querySelector('#section4');
 const sections = document.querySelectorAll('section');
 const navMenu = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
+
+console.log(sections);
+console.log(sections[0]);
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
 
+/**
+* @description Function below will:
+* Scroll the viewport to sec by it's id
+* @param (sec-id)
+*/
+// Scroll to anchor ID using scrollTO event
+function scrollToSec(id) {
+    const sec = document.getElementById(id);
+    sec.scrollIntoView({
+        block: 'start',
+        behavior: 'smooth',
+        inline: 'start'
+    });
+}
 
 
 /**
@@ -44,42 +61,60 @@ const navList = document.querySelector('#navbar__list');
  * 
 */
 
+// Add class 'active' to section when near top of viewport
+function toggleActiveSection() {
+    const active = "active-class";
+    let running = document.getElementsByClassName(active);
+    for (let section of sections) {
+        const allSections = section.getBoundingClientRect().top + section.getBoundingClientRect().bottom;
+        if (allSections < window.innerHeight) {
+            running[0].classList.remove(active);
+            section.classList.add(active);
+
+        }
+    }
+}
+
+
 // build the nav
 
 /** 
  * @description The 'for of loop' will:
  * Loop through all sections
  * Create a list item
- * Create an anchor item
  * Set the list item's class to 'navbar__liItem'
- * Add the section name to the innerText
+* Create an anchor item 
+* Add the section name to the innerText
  * Append the list item to the navbar
 */
-for (const section of sections) {
+for (let section of sections) {
     const navLiItem = document.createElement('li');
     navLiItem.className = "navbar__liItem";
+    const id = section.id;
     const navA = document.createElement('a');
     navA.textContent = section.dataset.nav;
     navA.href = `#${section.id}`;
+    const navBar = document.getElementById('navbar__list');
+    navLiItem.setAttribute('class', 'menu__link');
     navLiItem.appendChild(navA);
     navList.appendChild(navLiItem);
-}
 
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
+    navLiItem.addEventListener('click', function () {
+        scrollToSec(id);
+    });
+    navBar.appendChild(navLiItem);
+};
 
 
 /**
  * End Main Functions
- * Begin Events
  * 
 */
 
-// Build menu 
-
-// Scroll to section on link click
 
 // Set sections as active
+/**
+ * @description Listens when  a section is scrolled 
+ * Sets section to active
+ */
+window.addEventListener('scroll', toggleActiveSection);
