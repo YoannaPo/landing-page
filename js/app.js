@@ -30,6 +30,7 @@ const fourthSection = document.querySelector('#section4');
 const sections = document.querySelectorAll('section');
 const navMenu = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
+const toTheTopButton = document.querySelector('#to-the-top');
 
 console.log(sections);
 console.log(sections[0]);
@@ -54,6 +55,27 @@ function scrollToSec(id) {
     });
 }
 
+/**
+ * @description If you scroll down 25px from the top of the document, 
+ * this will show the button
+ */
+window.onscroll = function() {scrollIsVisibleBtn()};
+
+function scrollIsVisibleBtn() {
+  if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) {
+    toTheTopButton.style.display = "block";
+  } else {
+    toTheTopButton.style.display = "none";
+  }
+}
+
+/**
+ * @description When you clicks on the button, scroll to the top of the document
+ */
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  } 
 
 /**
  * End Helper Functions
