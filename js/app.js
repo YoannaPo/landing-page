@@ -22,18 +22,18 @@
  * Define Global Variables
  * 
 */
-const firstSection = document.querySelector('#section1');
-const secondSection = document.querySelector('#section2');
-const thirdSection = document.querySelector('#section3');
-const fourthSection = document.querySelector('#section4');
+// const firstSection = document.querySelector('#section1');
+// const secondSection = document.querySelector('#section2');
+// const thirdSection = document.querySelector('#section3');
+// const fourthSection = document.querySelector('#section4');
 
 const sections = document.querySelectorAll('section');
 const navMenu = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
 const toTheTopButton = document.querySelector('#to-the-top');
 
-console.log(sections);
-console.log(sections[0]);
+// console.log(sections);
+// console.log(sections[0]);
 /**
  * End Global Variables
  * Start Helper Functions
@@ -127,6 +127,33 @@ for (let section of sections) {
     navBar.appendChild(navLiItem);
 };
 
+/** 
+ * @description fuction that add an active state to navigation
+ *  items when a section is in the viewport
+ */
+
+//Add class 'active' to section when near top of viewport
+function addOrRemoveActiveNav() {
+    //const active = "active-class";
+    const allLinks = document.querySelectorAll('.menu__link a');
+    for (let section of sections) {
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionBottom = section.getBoundingClientRect().bottom;
+
+        // Check if the section is in the viewport
+    if (sectionTop <= 0 && sectionBottom > 0) {
+    // Loop through each navigation link
+        allLinks.forEach(link => {
+      // Remove the active class from all links
+        link.classList.remove('active2');
+    // Add the active class to the link that corresponds to the current section
+        if (link.getAttribute('href') === `#${section.id}`) {
+            link.classList.add('active2');
+        }
+    });
+  }
+}
+}
 
 /**
  * End Main Functions
@@ -140,3 +167,4 @@ for (let section of sections) {
  * Sets section to active
  */
 window.addEventListener('scroll', toggleActiveSection);
+window.addEventListener('scroll', addOrRemoveActiveNav);
