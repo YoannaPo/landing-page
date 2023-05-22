@@ -166,8 +166,10 @@ for (let tab of navTabs) {
 
 
 /**
- * @description Listens when  a section is scrolled 
+ * @description
+ * Listens when  a section is scrolled 
  * Sets section to active
  */
+
 window.addEventListener('scroll', toggleActiveSection);
 window.addEventListener('scroll', addOrRemoveActiveNav);
