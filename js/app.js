@@ -22,18 +22,12 @@
  * Define Global Variables
  * 
 */
-// const firstSection = document.querySelector('#section1');
-// const secondSection = document.querySelector('#section2');
-// const thirdSection = document.querySelector('#section3');
-// const fourthSection = document.querySelector('#section4');
-
 const sections = document.querySelectorAll('section');
 const navMenu = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
 const toTheTopButton = document.querySelector('#to-the-top');
+const navTabs = Array.from(document.querySelectorAll('#navbar__list li'));
 
-// console.log(sections);
-// console.log(sections[0]);
 /**
  * End Global Variables
  * Start Helper Functions
@@ -56,8 +50,8 @@ function scrollToSec(id) {
 }
 
 /**
- * @description If you scroll down 25px from the top of the document, 
- * this will show the button
+ * @description Scroll down 25px from the top of the document, 
+ * and this will show the button
  */
 window.onscroll = function() {scrollIsVisibleBtn()};
 
@@ -70,7 +64,7 @@ function scrollIsVisibleBtn() {
 }
 
 /**
- * @description When you clicks on the button, scroll to the top of the document
+ * @description Click on the button, this will scroll to the top of the document
  */
 function topFunction() {
     document.body.scrollTop = 0; // For Safari
@@ -98,7 +92,7 @@ function toggleActiveSection() {
 }
 
 
-// build the nav
+// Build the nav
 
 /** 
  * @description The 'for of loop' will:
@@ -134,7 +128,6 @@ for (let section of sections) {
 
 //Add class 'active' to section when near top of viewport
 function addOrRemoveActiveNav() {
-    //const active = "active-class";
     const allLinks = document.querySelectorAll('.menu__link a');
     for (let section of sections) {
         const sectionTop = section.getBoundingClientRect().top;
@@ -145,10 +138,10 @@ function addOrRemoveActiveNav() {
     // Loop through each navigation link
         allLinks.forEach(link => {
       // Remove the active class from all links
-        link.classList.remove('active2');
+        link.classList.remove('navbar__list-active');
     // Add the active class to the link that corresponds to the current section
         if (link.getAttribute('href') === `#${section.id}`) {
-            link.classList.add('active2');
+            link.classList.add('navbar__list-active');
         }
     });
   }
@@ -157,11 +150,21 @@ function addOrRemoveActiveNav() {
 
 /**
  * End Main Functions
- * 
+ * Begin Events
 */
 
+// Menu setup
+/**
+ * @description Scroll to the section on link click
+ */
+for (let tab of navTabs) {
+    tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        scrollToSec(tab.classList[0]);
+    });
+}
 
-// Set sections as active
+
 /**
  * @description Listens when  a section is scrolled 
  * Sets section to active
