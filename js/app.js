@@ -26,7 +26,7 @@ const sections = document.querySelectorAll('section');
 const navMenu = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
 const toTheTopButton = document.querySelector('#to-the-top');
-const navTabs = Array.from(document.querySelectorAll('#navbar__list li'));
+//const navTabs = Array.from(document.querySelectorAll('#navbar__list li'));
 
 /**
  * End Global Variables
@@ -86,7 +86,6 @@ function toggleActiveSection() {
         if (allSections < window.innerHeight) {
             running[0].classList.remove(active);
             section.classList.add(active);
-
         }
     }
 }
@@ -98,7 +97,7 @@ function toggleActiveSection() {
  * @description The 'for of loop' will:
  * Loop through all sections
  * Create a list item
- * Set the list item's class to 'navbar__liItem'
+ * Set the list item's class to 'menu__link'
 * Create an anchor item 
 * Add the section name to the innerText
  * Append the list item to the navbar
@@ -115,7 +114,8 @@ for (let section of sections) {
     navLiItem.appendChild(navA);
     navList.appendChild(navLiItem);
 
-    navLiItem.addEventListener('click', function () {
+    navLiItem.addEventListener('click', function (e) {
+        e.preventDefault();
         scrollToSec(id);
     });
     navBar.appendChild(navLiItem);
@@ -157,12 +157,12 @@ function addOrRemoveActiveNav() {
 /**
  * @description Scroll to the section on link click
  */
-for (let tab of navTabs) {
-    tab.addEventListener("click", (e) => {
-        e.preventDefault();
-        scrollToSec(tab.classList[0]);
-    });
-}
+// for (let tab of navTabs) {
+//     tab.addEventListener("click", (e) => {
+//         e.preventDefault();
+//         scrollToSec(tab.classList[0]);
+//     });
+// }
 
 
 /**
