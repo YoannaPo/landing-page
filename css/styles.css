@@ -18,6 +18,9 @@ body {
     color: #fff;
 }
 
+* {
+    box-sizing: border-box;
+  }
 
 /* Typeography General*/
 h1 {
@@ -26,10 +29,29 @@ h1 {
     margin: 2em 1rem;
 }
 
-@media only screen and (min-width: 35em){
+
+h3 {
+    text-shadow: 1px 1px 1px #cc1;
+}
+
+@media only screen and (width > 45em){
+
+    .landing__container {
+        min-width: 46em;
+    }
+
+
     h1 {
         font-size: 7em;
         margin: 2em 4rem 1em;
+    }
+
+    .navbar__logo {
+        mix-blend-mode: difference;
+    }
+
+    .photo-card-mobile {
+        display: none;
     }
 }
 
@@ -70,16 +92,32 @@ section {
 
 /* Navigation Styles*/
 
-/***/
 .navbar__menu {
     display: flex;
-    gap: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: rem;
 }
+
+.navbar__logo {
+    color: hsl(60, 85%, 43%);
+    width: 2rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 
 .navbar__menu ul {
     padding-left: 0;
-    margin: 0;
-    text-align: right;
+    margin: 0.5rem;
+    display: flex;
+    /*text-align: center; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap; 
+    /*width: 100%; */
 }
 
 .navbar__menu li {
@@ -88,17 +126,27 @@ section {
 
 .navbar__menu .menu__link {
     display: block;
-    padding: 1em;
-    font-weight: bold;
+    padding: 0.5em;
+    margin-left: 1em;
+    font-weight: lighter;
     text-decoration: none;
     color: #000;
 }
 
 .navbar__menu .menu__link:hover {
-    background: #585757;
+    background: #434141b4;
     color: #fff;
     border-radius: 8%;
     transition: ease 0.3s all;
+}
+
+#navbar__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color: transparent;
 }
 
 #navbar__list > li {
@@ -110,12 +158,15 @@ section {
 #navbar__list > li a {
     text-decoration: none;
     color: #0e2147;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: center;
 }
 
 .navbar__list-active {
-    text-shadow: none;
-    border-bottom: solid 4px #cc1;
+    text-shadow:  1px 1px 1px #cc1;
+    border-bottom: solid 3px #cc1;
 }
 
 /* Header Styles */
@@ -127,11 +178,49 @@ section {
     z-index: 5;
 }
 
+.landing__link {
+    background-image: linear-gradient(
+        to right,
+        #54b3d6,
+        #54b3d6 50%,
+        #000 50%
+      );
+      background-size: 200% 100%;
+      background-position: -100%;
+      display: inline-block;
+      padding: 5px 0;
+      position: relative;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .landing__link:before {
+      content: '';
+      background: #54b3d6;
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    a:hover {
+     background-position: 0;
+    }
+    
+    a:hover::before {
+      width:100%;
+    }
+
 /* Footer Styles */
 .page__footer {
     background: #000;
     padding: 3em;
     color: #fff;
+    position: static;
 }
 
 .page__footer p{
@@ -140,7 +229,8 @@ section {
 
 /* Button ToTheTop Styles */
 #to-the-top {
-    display: none; /* Hidden by default */
+    display: none;
+
     position: fixed; /* Fixed/sticky position */
     bottom: 20px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
@@ -151,8 +241,8 @@ section {
     outline: none; 
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px;
-    border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
+    border-radius: 10px;
+    font-size: 18px; 
 }
 
 /* ---- Theme Rules ---- */
@@ -162,11 +252,42 @@ section {
     text-align: left;
 }
 
-@media only screen and (min-width: 35em){
+.photo-card-mobile {
+    width: 80%;
+    height: 80%;
+    background: #eee;
+    box-shadow: 0 8px 8px -4px lightblue;
+}
+
+.photo-card {
+    box-shadow: 0 -5px 3px -3px black, 0 5px 3px -3px black;
+}
+
+@media only screen and (width <= 45em){
     .landing__container {
-        max-width: 50em;
+        min-width: 10em;
         padding: 4em;
     }
+
+    .navbar__logo {
+        display: none;
+    }
+
+    .photo-card {
+        display: none;
+    }
+}
+
+.navbar__menu {
+    max-height: fit-content;
+}
+
+.main-hero {
+    min-height: 70vh;
+}
+
+h1 {
+    margin-top: 2em;
 }
 
 section:nth-of-type(even) .landing__container {
@@ -253,6 +374,7 @@ section.active-class .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
+
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
