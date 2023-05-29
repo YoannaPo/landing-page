@@ -26,7 +26,6 @@ const sections = document.querySelectorAll('section');
 const navMenu = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
 const toTheTopButton = document.querySelector('#to-the-top');
-//const navTabs = Array.from(document.querySelectorAll('#navbar__list li'));
 
 /**
  * End Global Variables
@@ -152,18 +151,6 @@ function addOrRemoveActiveNav() {
  * End Main Functions
  * Begin Events
 */
-
-// Menu setup
-/**
- * @description Scroll to the section on link click
- */
-// for (let tab of navTabs) {
-//     tab.addEventListener("click", (e) => {
-//         e.preventDefault();
-//         scrollToSec(tab.classList[0]);
-//     });
-// }
-
 
 /**
  * @description
