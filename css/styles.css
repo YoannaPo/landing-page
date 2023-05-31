@@ -178,6 +178,8 @@ section {
     z-index: 5;
 }
 
+/* Landing Links Styles */
+/*Styling link example added from this site: https://css-tricks.com/css-link-hover-effects/ */
 .landing__link {
     background-image: linear-gradient(
         to right,
@@ -190,8 +192,10 @@ section {
       display: inline-block;
       padding: 5px 0;
       position: relative;
+      background-clip: inherit;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      color: transparent;
       transition: all 0.3s ease-in-out;
     }
     
@@ -214,6 +218,7 @@ section {
     a:hover::before {
       width:100%;
     }
+    /* End of styling link example added from this site: https://css-tricks.com/css-link-hover-effects/ */
 
 /* Footer Styles */
 .page__footer {
