@@ -112,12 +112,10 @@ section {
     padding-left: 0;
     margin: 0.5rem;
     display: flex;
-    /*text-align: center; */
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap; 
-    /*width: 100%; */
 }
 
 .navbar__menu li {
