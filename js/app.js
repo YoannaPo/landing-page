@@ -129,7 +129,7 @@ for (let section of sections) {
 function addOrRemoveActiveNav() {
     const allLinks = document.querySelectorAll('.menu__link a');
     for (let section of sections) {
-        const sectionTop = section.getBoundingClientRect().top;
+        const sectionTop = Math.floor(section.getBoundingClientRect().top);
         const sectionBottom = section.getBoundingClientRect().bottom;
 
         // Check if the section is in the viewport
